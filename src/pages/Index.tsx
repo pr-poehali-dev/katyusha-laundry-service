@@ -52,7 +52,7 @@ export default function Index() {
             </div>
             <div className="animate-scale-in">
               <img 
-                src="/img/5472c2ab-9e1b-4ab2-b80e-9df26b3c60b2.jpg" 
+                src="/img/7983e6f8-de3a-4243-8c2c-8e36aab667c1.jpg" 
                 alt="Промышленная прачечная КАТЮША" 
                 className="rounded-lg shadow-2xl"
               />
