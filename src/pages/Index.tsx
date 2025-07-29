@@ -1,8 +1,48 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import { useState } from 'react';
 
 export default function Index() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      laundry_type: formData.get('laundry_type'),
+      weight: formData.get('weight'),
+      address: formData.get('address')
+    };
+
+    const subject = 'Заказ стирки с сайта';
+    const body = `Новый заказ стирки:
+
+Имя: ${data.name}
+Телефон: ${data.phone}
+Тип белья: ${data.laundry_type}
+Вес: ${data.weight} кг
+Адрес: ${data.address}`;
+    
+    const mailtoLink = `mailto:prachka_katya@mail.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    try {
+      window.location.href = mailtoLink;
+      setSubmitMessage('Заказ отправлен! Проверьте свой почтовый клиент.');
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      setSubmitMessage('Произошла ошибка. Попробуйте еще раз или позвоните нам.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
@@ -268,9 +308,7 @@ export default function Index() {
             <div className="bg-slate-50 rounded-lg p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Заказать стирку</h3>
               <form 
-                action="mailto:prachka_katya@mail.ru" 
-                method="post" 
-                encType="text/plain"
+                onSubmit={handleSubmit}
                 className="space-y-4"
               >
                 <div>
@@ -324,8 +362,21 @@ export default function Index() {
                     placeholder="Укажите адрес для забора и доставки белья"
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600">
-                  Заказать стирку
+                {submitMessage && (
+                  <div className={`p-4 rounded-md text-sm ${
+                    submitMessage.includes('отправлен') 
+                      ? 'bg-green-50 text-green-700 border border-green-200' 
+                      : 'bg-red-50 text-red-700 border border-red-200'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Отправка...' : 'Заказать стирку'}
                 </Button>
               </form>
             </div>
