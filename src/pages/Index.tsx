@@ -238,8 +238,7 @@ export default function Index() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-slate-900">Телефон</h3>
-                    <p className="text-slate-600">+7 (846) 123-45-67</p>
-                    <p className="text-slate-600">+7 (927) 123-45-67</p>
+                    <p className="text-slate-600">+7 (999) 704-98-00</p>
                   </div>
                 </div>
 
@@ -258,28 +257,64 @@ export default function Index() {
 
             <div className="bg-slate-50 rounded-lg p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Заказать стирку</h3>
-              <form className="space-y-4">
+              <form 
+                action="mailto:prachka_katya@mail.ru" 
+                method="post" 
+                encType="text/plain"
+                className="space-y-4"
+              >
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Ваше имя</label>
-                  <input type="text" className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+                  <input 
+                    type="text" 
+                    name="name" 
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Телефон</label>
-                  <input type="tel" className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Тип белья</label>
-                  <select className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <option>Постельное белье</option>
-                    <option>Покрывала и пледы</option>
-                    <option>Скатерти, шторы, ковры</option>
+                  <select 
+                    name="laundry_type" 
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  >
+                    <option value="">Выберите тип белья</option>
+                    <option value="Постельное белье - 100₽/кг">Постельное белье - 100₽/кг</option>
+                    <option value="Покрывала и пледы - 400₽/кг">Покрывала и пледы - 400₽/кг</option>
+                    <option value="Скатерти, шторы, ковры - по запросу">Скатерти, шторы, ковры - по запросу</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Примерный вес (кг)</label>
-                  <input type="number" className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+                  <input 
+                    type="number" 
+                    name="weight" 
+                    min="1" 
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                  />
                 </div>
-                <Button className="w-full bg-yellow-500 hover:bg-yellow-600">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Адрес для забора/доставки</label>
+                  <textarea 
+                    name="address" 
+                    rows={3}
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+                    placeholder="Укажите адрес для забора и доставки белья"
+                  ></textarea>
+                </div>
+                <Button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600">
                   Заказать стирку
                 </Button>
               </form>
@@ -302,7 +337,7 @@ export default function Index() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Контакты</h4>
               <p className="text-slate-400 mb-2">г. Самара, ул. Мальцева 3, корпус 1</p>
-              <p className="text-slate-400">+7 (846) 123-45-67</p>
+              <p className="text-slate-400">+7 (999) 704-98-00</p>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">Режим работы</h4>
