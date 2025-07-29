@@ -243,6 +243,16 @@ export default function Index() {
                 </div>
 
                 <div className="flex items-start space-x-4">
+                  <div className="bg-blue-100 rounded-full p-3">
+                    <Icon name="Mail" className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900">Электронная почта</h3>
+                    <p className="text-slate-600">prachka_katya@mail.ru</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
                   <div className="bg-purple-100 rounded-full p-3">
                     <Icon name="Truck" className="h-6 w-6 text-purple-600" />
                   </div>
@@ -337,7 +347,8 @@ export default function Index() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Контакты</h4>
               <p className="text-slate-400 mb-2">г. Самара, ул. Мальцева 3, корпус 1</p>
-              <p className="text-slate-400">+7 (999) 704-98-00</p>
+              <p className="text-slate-400 mb-2">+7 (999) 704-98-00</p>
+              <p className="text-slate-400">prachka_katya@mail.ru</p>
             </div>
             <div>
               <h4 className="text-lg font-semibold mb-4">Режим работы</h4>
