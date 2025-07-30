@@ -6,6 +6,7 @@ import { useState } from 'react';
 export default function Index() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +44,18 @@ export default function Index() {
     }
   };
 
+  const scrollToOrder = () => {
+    document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
@@ -58,7 +71,7 @@ export default function Index() {
               <a href="#pricing" className="text-slate-600 hover:text-slate-900 transition-colors">Прайс</a>
               <a href="#contacts" className="text-slate-600 hover:text-slate-900 transition-colors">Контакты</a>
             </nav>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-white">
+            <Button onClick={openModal} className="bg-yellow-500 hover:bg-yellow-600 text-white">
               <Icon name="Phone" className="h-4 w-4 mr-2" />
               Заказать
             </Button>
@@ -80,11 +93,11 @@ export default function Index() {
                 экспресс-стирка 24 часа, бесплатная доставка от 5 кг
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600">
+                <Button onClick={openModal} size="lg" className="bg-yellow-500 hover:bg-yellow-600">
                   <Icon name="Phone" className="h-5 w-5 mr-2" />
                   Заказать стирку
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button onClick={scrollToOrder} size="lg" variant="outline">
                   <Icon name="Calculator" className="h-5 w-5 mr-2" />
                   Рассчитать стоимость
                 </Button>
@@ -305,7 +318,7 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-lg p-8">
+            <div id="order" className="bg-slate-50 rounded-lg p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Заказать стирку</h3>
               <form 
                 onSubmit={handleSubmit}
@@ -412,6 +425,40 @@ export default function Index() {
           </div>
         </div>
       </footer>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div className="text-center">
+              <div className="bg-yellow-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Icon name="Phone" className="h-8 w-8 text-yellow-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Заказать стирку</h3>
+              <p className="text-slate-600 mb-6">Свяжитесь с нами любым удобным способом</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-center space-x-3 p-4 bg-green-50 rounded-lg">
+                  <Icon name="Phone" className="h-5 w-5 text-green-600" />
+                  <span className="text-lg font-semibold text-green-700">+7 (999) 704-98-00</span>
+                </div>
+                
+                <div className="flex items-center justify-center space-x-3 p-4 bg-blue-50 rounded-lg">
+                  <Icon name="Mail" className="h-5 w-5 text-blue-600" />
+                  <span className="text-lg font-semibold text-blue-700">prachka_katya@mail.ru</span>
+                </div>
+              </div>
+              
+              <button 
+                onClick={closeModal}
+                className="mt-6 bg-slate-500 hover:bg-slate-600 text-white px-6 py-2 rounded-md font-medium transition-colors"
+              >
+                Закрыть
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
