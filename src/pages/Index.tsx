@@ -134,7 +134,7 @@ export default function Index() {
                 <CardDescription>Деликатная стирка постельного белья</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-yellow-500 mb-2">100 ₽/кг</div>
+                <div className="text-2xl font-bold text-yellow-500 mb-2">80 ₽/кг</div>
                 <p className="text-slate-600">Самая низкая цена на рынке</p>
               </CardContent>
             </Card>
@@ -226,7 +226,7 @@ export default function Index() {
               <div className="text-center p-6 border-2 border-yellow-200 rounded-lg">
                 <Icon name="Bed" className="h-12 w-12 text-blue-500 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">Постельное белье</h3>
-                <div className="text-3xl font-bold text-yellow-500 mb-2">100 ₽</div>
+                <div className="text-3xl font-bold text-yellow-500 mb-2">80 ₽</div>
                 <p className="text-slate-600">за килограмм</p>
                 <p className="text-sm text-slate-500 mt-2">Самая низкая цена на рынке</p>
               </div>
@@ -350,7 +350,7 @@ export default function Index() {
                     className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   >
                     <option value="">Выберите тип белья</option>
-                    <option value="Постельное белье - 100₽/кг">Постельное белье - 100₽/кг</option>
+                    <option value="Постельное белье - 80₽/кг">Постельное белье - 80₽/кг</option>
                     <option value="Покрывала и пледы - 400₽/кг">Покрывала и пледы - 400₽/кг</option>
                     <option value="Скатерти, шторы, ковры - по запросу">Скатерти, шторы, ковры - по запросу</option>
                   </select>
